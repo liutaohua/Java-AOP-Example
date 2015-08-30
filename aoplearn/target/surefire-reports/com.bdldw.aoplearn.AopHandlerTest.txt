@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.bdldw.aoplearn.AopHandlerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.018 sec <<< FAILURE! - in com.bdldw.aoplearn.AopHandlerTest
+test002_BeforeAOP(com.bdldw.aoplearn.AopHandlerTest)  Time elapsed: 0.007 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.bdldw.aoplearn.AopHandlerTest.test002_BeforeAOP(AopHandlerTest.java:56)
+
+test003_AfterAOP(com.bdldw.aoplearn.AopHandlerTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.bdldw.aoplearn.AopHandlerTest.test003_AfterAOP(AopHandlerTest.java:63)
+
