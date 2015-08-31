@@ -8,7 +8,7 @@ ASM实现动态代理
     
     `Tester.java`   待使用ASM修改的类
     
-    `AsmLearn.java` 主要实现注解解析和代码插入
+    `AsmLearn.java` 实现对`Tester.java`类的解析和ClassLoader加载ASM修改后的类 
     
     `annotation`    包中为自定义注解
     
