@@ -1,6 +1,7 @@
 package com.bdldw.asmlearn;
 
-import java.io.FileOutputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.ClassReader;
@@ -35,9 +36,27 @@ public class AsmLearn {
 			}
 		}, 0);
 
-		byte[] code = cw.toByteArray();
-		FileOutputStream fos = new FileOutputStream(Tester.class.getSimpleName() + ".class");
-		fos.write(code);
-		fos.close();
+//		byte[] code = cw.toByteArray();
+//		FileOutputStream fos = new FileOutputStream(Tester.class.getSimpleName() + ".class");
+//		fos.write(code);
+//		fos.close();
+		
+		Class<?> c = new ClassLoader() {
+			@Override
+			public Class<?> loadClass(final String name) throws ClassNotFoundException {
+				if (name.equals(n)) {
+					byte[] b = cw.toByteArray();
+					return defineClass(name, b, 0, b.length);
+				}
+				return super.loadClass(name);
+			}
+		}.loadClass(n);
+
+		Method m = c.getMethod("afterTest", new Class[] {});
+		try {
+			m.invoke(c.newInstance(), new Object[] {});
+		} catch (InvocationTargetException e) {
+			e.getCause().printStackTrace(System.out);
+		}
 	}
 }
